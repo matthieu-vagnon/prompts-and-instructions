@@ -261,17 +261,3 @@ You are a React/TypeScript expert. Create a React application following hexagona
 6. **Mobile-first responsive design** with Tailwind breakpoints
 7. **Touch targets** minimum 44x44px on mobile
 8. SOLID + KISS: simplicity and design principles above all
-
-## 📦 Recommended Stack
-
-- **Runtime**: Bun (fast package manager, test runner, bundler)
-- **Build tool**: Vite (fast) or Next.js (SSR/SSG)
-- **Language**: TypeScript (strict mode)
-- **UI Library**: React 18+
-- **Styling**: Tailwind CSS
-- **State**: React Context + hooks, or Zustand/Jotai for complex cases
-- **Forms**: React Hook Form + Zod validation
-- **Validation**: Zod (schema validation + type inference)
-- **Data fetching**: TanStack Query (React Query)
-- **Testing**: Bun test + React Testing Library
-- **Linting/Formatting**: Biome (fast all-in-one tool, replaces ESLint + Prettier)
