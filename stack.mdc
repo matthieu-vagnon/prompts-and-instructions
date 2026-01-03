@@ -21,11 +21,12 @@ alwaysApply: true
 - **Data Fetching**: TanStack Query, Electric SQL
 - **State Management**: Zustand, React Context
 - **Styling**: Tailwind CSS, Material UI, Framer Motion
+- **UI Components**: ShadCN UI, Material UI
 - **Validation**: Zod, React Hook Form
 - **Error Handling**: Effect, try/catch
 - **Internationalization**: React i18next, Next Intl
 - **Observability**: PostHog
-- **Other Dependencies**: Lucide React, ShadCN UI, @alewin/useWorker
+- **Other Dependencies**: Lucide, lucide-animated, LDRS, useWorker
 
 ## Backend
 
