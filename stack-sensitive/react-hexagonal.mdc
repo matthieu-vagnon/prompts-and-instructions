@@ -2,13 +2,15 @@
 alwaysApply: true
 ---
 
-# Cursor Instructions
+# General Coding Instructions
 
-You are a React/TypeScript expert. Create a React application following hexagonal architecture, SOLID principles, and KISS.
+## Your Role
 
-## 🏗️ Project Structure
+You are a React.js expert. You need to develop a React.js application following hexagonal architecture, SOLID principles, and KISS.
 
-```
+## Project Structure
+
+```text
 ├── src/
 │   ├── application/          # Application layer (UI)
 │   │   ├── components/       # React components (presentational + container)
@@ -23,23 +25,18 @@ You are a React/TypeScript expert. Create a React application following hexagona
 │       ├── api/              # API clients (HTTP, GraphQL)
 │       ├── assets/           # Static assets (images, fonts, icons)
 │       └── config/           # Configuration implementations
-├── tests/
-│   ├── unit/                 # Unit tests
-│   └── doubles/              # Mock implementations (test doubles)
-├── .github/workflows/        # CI/CD
-├── package.json
-├── tsconfig.json
-├── biome.json                # Biome config (linter + formatter)
-└── vite.config.ts            # or next.config.js
+└── tests/
+    ├── unit/                 # Unit tests
+    └── doubles/              # Mock implementations (test doubles)
 ```
 
-## 🎯 Core Principles
+## Core Principles
 
 ### Hexagonal Architecture
 
-- **Domain**: Pure TypeScript, ZERO React/UI dependencies (no JSX, no hooks, no components)
-- **Application**: UI layer, consumes domain through hooks, can use React freely
-- **Infrastructure**: External adapters (API clients, storage), implements domain ports
+- **Application**: UI layer, consumes domain through hooks, can use React freely.
+- **Domain**: Pure TypeScript, ZERO React/UI dependencies (no JSX, no hooks, no components).
+- **Infrastructure**: External adapters (API clients, storage), implements domain ports.
 
 ### SOLID
 
@@ -57,7 +54,7 @@ You are a React/TypeScript expert. Create a React application following hexagona
 - Minimal state management (use React state/context, avoid Redux unless needed)
 - Clear naming: `useUserProfile` not `useData`, `UserCard` not `Card`
 
-## 📋 Code Rules
+## Code Rules
 
 ### TypeScript Best Practices
 
@@ -189,7 +186,7 @@ You are a React/TypeScript expert. Create a React application following hexagona
 - Types: `PascalCase.ts` or `types.ts` (e.g., `User.ts` or `user.types.ts`)
 - Tests: `*.test.tsx` or `*.spec.tsx`
 
-## ✅ Checklist
+## Checklist
 
 ### Architecture
 
@@ -236,7 +233,7 @@ You are a React/TypeScript expert. Create a React application following hexagona
 - [ ] TypeScript compiler checks in CI
 - [ ] Docker for deployment (optional)
 
-## 🚫 Absolutely Avoid
+## Absolutely Avoid
 
 - ❌ React imports in domain layer (no hooks, no JSX, no components)
 - ❌ Direct API calls in components (use hooks that consume domain)
@@ -251,7 +248,7 @@ You are a React/TypeScript expert. Create a React application following hexagona
 - ❌ Ignoring touch interactions (hover states don't work on mobile)
 - ❌ Tiny touch targets (<44px on mobile)
 
-## 📌 Critical Reminders
+## Critical Reminders
 
 1. **Domain** = pure TypeScript, zero React dependencies
 2. **Application** consumes domain via **custom hooks**
