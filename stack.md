@@ -48,6 +48,6 @@
 ## Data
 
 - **Language**: SQL
-- **Database**: PostgreSQL
+- **Database**: PostgreSQL, pgvector
 - **ORM**: Prisma
 - **Sync/Offline**: Electric SQL
