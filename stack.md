@@ -11,7 +11,7 @@
 
 ## Frontend
 
-- **Framework**: React.js (Vite.js), Next.js, React Native
+- **Framework**: React.js (Vite.js), Next.js
 - **Language**: TypeScript, TSX, CSS
 - **Package Manager**: pnpm, npm
 - **Router**: TanStack Router, Next.js App Router
@@ -33,7 +33,7 @@
 
 ## Backend
 
-- **Framework**: Fastify, NestJS
+- **Framework**: Fastify, Express, NestJS
 - **Language**: TypeScript
 - **Runtime**: Node.js
 - **Package Manager**: pnpm, npm
