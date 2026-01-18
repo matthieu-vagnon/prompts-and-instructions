@@ -30,6 +30,7 @@
 ## Middleware
 
 - **Auth**: Auth0
+- **Billing**: Stripe
 
 ## Backend
 
