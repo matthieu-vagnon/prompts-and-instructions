@@ -1,29 +1,29 @@
-# Conventions TypeScript
+# TypeScript Conventions
 
-## Typage strict
+## Strict Typing
 
-- `strict: true` obligatoire dans tsconfig
-- Jamais de `any` — utiliser `unknown` si le type est réellement inconnu
-- Types explicites sur les paramètres et retours de fonctions
+- `strict: true` required in tsconfig
+- Never use `any` — use `unknown` if the type is truly unknown
+- Explicit types on function parameters and return values
 
-## Choix de syntaxe
+## Syntax Choices
 
-| Cas                   | Utiliser             | Exemple                                                                |
-| --------------------- | -------------------- | ---------------------------------------------------------------------- |
-| Objets/contrats       | `interface`          | `interface User { id: string }`                                        |
-| Unions/intersections  | `type`               | `type Status = 'active' \| 'inactive'`                                 |
-| Constantes            | `as const`           | `const ROLES = ['admin', 'user'] as const`                             |
-| Discrimination d'état | Discriminated unions | `type State = { status: 'loading' } \| { status: 'success'; data: T }` |
+| Case                   | Use                  | Example                                                                |
+| ---------------------- | -------------------- | ---------------------------------------------------------------------- |
+| Objects/contracts      | `interface`          | `interface User { id: string }`                                        |
+| Unions/intersections   | `type`               | `type Status = 'active' \| 'inactive'`                                 |
+| Constants              | `as const`           | `const ROLES = ['admin', 'user'] as const`                             |
+| State discrimination   | Discriminated unions | `type State = { status: 'loading' } \| { status: 'success'; data: T }` |
 
-## Utilitaires natifs à privilégier
+## Prefer Native Utility Types
 
-- `Partial<T>`, `Required<T>` — optionalité
-- `Pick<T, K>`, `Omit<T, K>` — sélection de propriétés
-- `Record<K, V>` — dictionnaires typés
-- `ReturnType<T>`, `Parameters<T>` — inférence de fonctions
-- `Awaited<T>` — unwrap de Promises
+- `Partial<T>`, `Required<T>` — optionality
+- `Pick<T, K>`, `Omit<T, K>` — property selection
+- `Record<K, V>` — typed dictionaries
+- `ReturnType<T>`, `Parameters<T>` — function inference
+- `Awaited<T>` — Promise unwrapping
 
-## Type guards
+## Type Guards
 
 ```typescript
 function isUser(value: unknown): value is User {
@@ -31,8 +31,8 @@ function isUser(value: unknown): value is User {
 }
 ```
 
-## Éviter
+## Avoid
 
-- `// @ts-ignore` et `// @ts-expect-error` sans justification
-- Types trop larges (`object`, `Function`)
-- Assertions de type (`as`) sauf cas légitimes (ex: DOM)
+- `// @ts-ignore` and `// @ts-expect-error` without justification
+- Overly broad types (`object`, `Function`)
+- Type assertions (`as`) except in legitimate cases (e.g., DOM)

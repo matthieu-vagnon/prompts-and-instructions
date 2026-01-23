@@ -1,22 +1,22 @@
-# Guidelines de Test
+# Testing Guidelines
 
-## Principes
+## Principles
 
-- **Tester le comportement**, pas l'implémentation
-- **Éviter les tests fragiles** — ne pas tester le state interne
-- **Mock uniquement les dépendances externes** (API, storage)
+- **Test behavior**, not implementation
+- **Avoid brittle tests** — do not test internal state
+- **Mock only external dependencies** (API, storage)
 
-## Sélecteurs (Testing Library)
+## Selectors (Testing Library)
 
-Ordre de priorité :
+Priority order:
 
-1. `getByRole` — accessibilité native
-2. `getByLabelText` — formulaires
+1. `getByRole` — native accessibility
+2. `getByLabelText` — forms
 3. `getByPlaceholderText` — inputs
-4. `getByText` — contenu textuel
-5. `getByTestId` — dernier recours
+4. `getByText` — text content
+5. `getByTestId` — last resort
 
-## Structure d'un test
+## Test Structure
 
 ```typescript
 describe('UserCard', () => {
@@ -35,13 +35,13 @@ describe('UserCard', () => {
 });
 ```
 
-## Test doubles
+## Test Doubles
 
-- **Fake** — Implémentation simplifiée (in-memory repository)
-- **Stub** — Retourne des valeurs prédéfinies
-- **Mock** — Vérifie les appels (utiliser avec parcimonie)
+- **Fake** — Simplified implementation (in-memory repository)
+- **Stub** — Returns predefined values
+- **Mock** — Verifies calls (use sparingly)
 
 ## Coverage
 
-- Viser **70%+** sur la logique métier critique (domain)
-- Ne pas viser 100% — les tests superficiels ont peu de valeur
+- Target **70%+** on critical business logic (domain)
+- Do not aim for 100% — superficial tests have little value

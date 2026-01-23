@@ -1,23 +1,23 @@
-# Patterns de Composants React
+# React Component Patterns
 
-## Règles fondamentales
+## Core Rules
 
-- Composants fonctionnels uniquement
-- Props destructurées dans la signature
-- Un fichier = un composant exporté (+ helpers privés si nécessaire)
-- Taille max recommandée : ~150 lignes
+- Functional components only
+- Destructure props in the signature
+- One file = one exported component (+ private helpers if needed)
+- Recommended max size: ~150 lines
 
 ## Patterns
 
 ### Presentational vs Container
 
 ```typescript
-// Presentational — UI pure, aucune logique métier
+// Presentational — Pure UI, no business logic
 function UserCard({ name, avatar, onEdit }: UserCardProps) {
   return (/* JSX */);
 }
 
-// Container — Connecte au domaine via hooks
+// Container — Connects to domain via hooks
 function UserCardContainer({ userId }: { userId: string }) {
   const { user, updateUser } = useUser(userId);
   return <UserCard {...user} onEdit={updateUser} />;
@@ -26,7 +26,7 @@ function UserCardContainer({ userId }: { userId: string }) {
 
 ### Compound Components
 
-Pour des composants liés qui partagent un état implicite :
+For related components that share implicit state:
 
 ```typescript
 <Tabs defaultValue="tab1">
@@ -39,21 +39,21 @@ Pour des composants liés qui partagent un état implicite :
 
 ## Props
 
-- Préférer les unions aux booléens : `variant: 'primary' | 'secondary'` plutôt que `isPrimary`
-- `children` pour la composition
-- Defaults via destructuring : `{ size = 'md' }`
+- Prefer unions over booleans: `variant: 'primary' | 'secondary'` instead of `isPrimary`
+- Use `children` for composition
+- Defaults via destructuring: `{ size = 'md' }`
 
-## Performance (mesurer avant d'optimiser)
+## Performance (measure before optimizing)
 
-| Outil         | Quand                                               |
-| ------------- | --------------------------------------------------- |
-| `React.memo`  | Composant re-rendu souvent avec mêmes props         |
-| `useMemo`     | Calcul coûteux dans le render                       |
-| `useCallback` | Référence stable pour les callbacks passés en props |
-| `React.lazy`  | Code splitting par route/feature                    |
+| Tool          | When                                                     |
+| ------------- | -------------------------------------------------------- |
+| `React.memo`  | Component re-renders often with same props               |
+| `useMemo`     | Expensive calculation in render                          |
+| `useCallback` | Stable reference for callbacks passed as props           |
+| `React.lazy`  | Code splitting by route/feature                          |
 
 ## Hooks
 
-- Préfixe `use` obligatoire
-- Appels au top-level uniquement (pas dans conditions/boucles)
-- Extraire la logique complexe en hooks custom
+- `use` prefix required
+- Call at top-level only (not in conditions/loops)
+- Extract complex logic into custom hooks

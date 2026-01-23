@@ -1,55 +1,55 @@
 ---
 name: readme
-description: Génère ou met à jour le README.md du projet en analysant la structure et les fichiers de configuration.
+description: Generates or updates the project README.md by analyzing the structure and configuration files.
 argument-hint: "[create|update]"
 ---
 
-# Skill README Generator
+# README Generator Skill
 
-Génère ou met à jour le fichier `README.md` à la racine du projet.
+Generates or updates the `README.md` file at the project root.
 
 ## Workflow
 
-1. **Analyser le projet**
-   - Lire `package.json` (ou équivalent) pour les métadonnées
-   - Lire `.claude/CLAUDE.md` et `.claude/rules/` pour comprendre le contexte
-   - Scanner la structure des dossiers (`src/`, `lib/`, `app/`, etc.)
-   - Identifier le stack technique utilisé
+1. **Analyze the project**
+   - Read `package.json` (or equivalent) for metadata;
+   - Read `.claude/CLAUDE.md` and `.claude/rules/` to understand context;
+   - Scan folder structure (`src/`, `lib/`, `app/`, etc.);
+   - Identify the tech stack in use.
 
-2. **Collecter les informations existantes**
-   - Si `README.md` existe : le lire pour préserver le contenu personnalisé
-   - Identifier les sections à conserver vs régénérer
+2. **Collect existing information**
+   - If `README.md` exists: read it to preserve custom content;
+   - Identify sections to keep vs regenerate.
 
-3. **Générer le contenu**
-   - Suivre la structure ci-dessous
-   - Utiliser un ton professionnel et concis
-   - Pas d'emojis sauf si demandé explicitement
+3. **Generate content**
+   - Follow the structure below;
+   - Use a professional and concise tone;
+   - No emojis unless explicitly requested.
 
-## Structure du README
+## README Structure
 
 ```markdown
-# Nom du Projet
+# Project Name
 
-Description courte et percutante (1-2 phrases).
+Short and impactful description (1-2 sentences).
 
 ## Features
 
-- Feature 1
-- Feature 2
+- Feature 1;
+- Feature 2.
 
 ## Tech Stack
 
-| Catégorie | Technologies |
-| --------- | ------------ |
-| Frontend  | ...          |
-| Backend   | ...          |
+| Category | Technologies |
+| -------- | ------------ |
+| Frontend | ...          |
+| Backend  | ...          |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js >= X.X
-- pnpm/npm
+- Node.js >= X.X;
+- pnpm/npm.
 
 ### Installation
 
@@ -78,14 +78,14 @@ src/
 
 ## License
 
-MIT (ou autre)
+MIT (or other)
 ```
 
-## Règles
+## Rules
 
-- **Ne jamais inventer** de fonctionnalités non présentes dans le code
-- **Préserver** les sections personnalisées existantes (Contributing, Acknowledgments, etc.)
-- **Adapter** la structure selon le type de projet (lib, app, monorepo)
-- Si `$ARGUMENTS` = "create" : générer un nouveau README
-- Si `$ARGUMENTS` = "update" : mettre à jour en préservant le contenu existant
-- Sans argument : détecter automatiquement (update si existe, create sinon)
+- **Never invent** features not present in the code;
+- **Preserve** existing custom sections (Contributing, Acknowledgments, etc.);
+- **Adapt** the structure based on project type (lib, app, monorepo);
+- If `$ARGUMENTS` = "create": generate a new README;
+- If `$ARGUMENTS` = "update": update while preserving existing content;
+- Without argument: auto-detect (update if exists, create otherwise).

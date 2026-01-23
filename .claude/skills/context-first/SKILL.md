@@ -1,24 +1,26 @@
 ---
 name: context-first
-description: Stratégie d'implémentation contextuelle, traite les fichiers fournis comme fondation immuable.
+description: Context-first implementation strategy that treats provided files as immutable foundation.
+disable-model-invocation: true
+user-invocable: true
 ---
 
-# Stratégie Context-First
+# Context-First Strategy
 
-Quand des fichiers sont fournis en contexte, traite-les comme la fondation autoritaire : types, classes, interfaces et structures existantes doivent être réutilisés tels quels.
+When files are provided as context, treat them as the authoritative foundation: existing types, classes, interfaces, and structures must be reused as-is.
 
 ## Workflow
 
-1. **Analyser** — Lis attentivement les fichiers fournis, comprends l'architecture et les patterns existants
-2. **Planifier** — Identifie les modifications nécessaires, demande des clarifications si besoin
-3. **Implémenter** — Respecte strictement l'architecture, SOLID et KISS
+1. **Analyze** — Carefully read the provided files, understand the architecture and existing patterns.
+2. **Plan** — Identify necessary modifications, ask for clarifications if needed.
+3. **Implement** — Strictly follow the architecture, SOLID, and KISS principles.
 
-## Règles strictes
+## Strict Rules
 
-| Règle                           | Description                                                                |
-| ------------------------------- | -------------------------------------------------------------------------- |
-| **Fichiers fournis uniquement** | Modifie SEULEMENT les fichiers explicitement fournis                       |
-| **Pas de redéfinition**         | Ne recrée/duplique JAMAIS les types, classes ou interfaces existants       |
-| **Pas de nouveaux fichiers**    | Demande confirmation explicite avant de créer un fichier                   |
-| **Intégration > Expansion**     | Compose avec l'existant plutôt que d'introduire des structures parallèles  |
-| **Blocage = Question**          | Si les contraintes bloquent, explique pourquoi et demande comment procéder |
+| Rule                        | Description                                                             |
+| --------------------------- | ----------------------------------------------------------------------- |
+| **Provided files only**     | Modify ONLY explicitly provided files.                                  |
+| **No redefinition**         | NEVER recreate/duplicate existing types, classes, or interfaces.        |
+| **No new files**            | Ask for explicit confirmation before creating a file.                   |
+| **Integration > Expansion** | Compose with existing code rather than introducing parallel structures. |
+| **Blocked = Question**      | If constraints block progress, explain why and ask how to proceed.      |

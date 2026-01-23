@@ -1,44 +1,44 @@
-# Architecture Hexagonale React
+# React Hexagonal Architecture
 
 ## Structure
 
 ```
 src/
-├── application/       # UI — Peut utiliser React librement
-│   ├── components/    # Composants React
-│   ├── hooks/         # Hooks métier (consomment le domaine)
-│   ├── pages/         # Composants de route
+├── application/       # UI — Can freely use React
+│   ├── components/    # React components
+│   ├── hooks/         # Business hooks (consume domain)
+│   ├── pages/         # Route components
 │   └── providers/     # Context providers
-├── domain/            # Métier — TypeScript pur, ZÉRO dépendance React
-│   ├── entities/      # Modèles métier
-│   ├── ports/         # Interfaces/contrats
-│   └── lib/           # Fonctions pures
-└── infrastructure/    # Externe — Implémente les ports
-    ├── api/           # Clients HTTP/GraphQL
+├── domain/            # Business — Pure TypeScript, ZERO React dependencies
+│   ├── entities/      # Business models
+│   ├── ports/         # Interfaces/contracts
+│   └── lib/           # Pure functions
+└── infrastructure/    # External — Implements ports
+    ├── api/           # HTTP/GraphQL clients
     └── config/        # Configuration, feature flags
 ```
 
-## Règles par couche
+## Layer Rules
 
-### Domain (coeur)
+### Domain (core)
 
-- **Aucune** dépendance React (pas de JSX, pas de hooks)
-- Fonctions pures, testables en isolation
-- Définit les `ports` (interfaces) que l'infrastructure implémente
+- **No** React dependencies (no JSX, no hooks)
+- Pure functions, testable in isolation
+- Defines `ports` (interfaces) that infrastructure implements
 
 ### Application (UI)
 
-- Consomme le domaine via des hooks custom
-- Composants découpés par responsabilité
-- State management : `useState` → `useReducer` → Context → Zustand (escalade progressive)
+- Consumes domain via custom hooks
+- Components split by responsibility
+- State management: `useState` → `useReducer` → Context → Zustand (progressive escalation)
 
 ### Infrastructure (adapters)
 
-- Implémente les ports définis par le domaine
-- Gère les side effects (API, storage, analytics)
-- Transforme les réponses externes en entités domaine
+- Implements ports defined by domain
+- Handles side effects (API, storage, analytics)
+- Transforms external responses into domain entities
 
-## Principe de dépendance
+## Dependency Principle
 
 ```
 Application → Domain ← Infrastructure
@@ -46,5 +46,5 @@ Application → Domain ← Infrastructure
          (ports/interfaces)
 ```
 
-- Application et Infrastructure dépendent du Domain
-- Domain ne dépend de rien d'externe
+- Application and Infrastructure depend on Domain
+- Domain depends on nothing external

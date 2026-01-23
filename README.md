@@ -4,32 +4,32 @@
 
 - [Claude Code Workflow](#claude-code-workflow)
   - [Features](#features)
-  - [Structure du projet](#structure-du-projet)
-  - [Stack technique couvert](#stack-technique-couvert)
-  - [Utilisation](#utilisation)
-  - [Skills disponibles](#skills-disponibles)
-  - [Plugins activés](#plugins-activés)
+  - [Project Structure](#project-structure)
+  - [Tech Stack Coverage](#tech-stack-coverage)
+  - [Usage](#usage)
+  - [Available Skills](#available-skills)
+  - [Enabled Plugins](#enabled-plugins)
 
 # Claude Code Workflow
 
-Configuration et conventions pour optimiser l'utilisation de Claude Code sur des projets TypeScript/React.
+Configuration and conventions to optimize Claude Code usage on TypeScript/React projects.
 
 ## Features
 
-- Règles de configuration Claude Code prêtes à l'emploi
-- Conventions TypeScript strictes avec patterns recommandés
-- Architecture hexagonale pour applications React
-- Guidelines de test avec Testing Library
-- Skills personnalisés (readme, context-first)
+- Ready-to-use Claude Code configuration rules
+- Strict TypeScript conventions with recommended patterns
+- Hexagonal architecture for React applications
+- Testing guidelines with Testing Library
+- Custom skills (readme, context-first)
 
-## Structure du projet
+## Project Structure
 
 ```
 .claude/
-├── CLAUDE.md              # Règles maîtresses
-├── settings.json          # Configuration Claude Code
+├── CLAUDE.md              # Master rules
+├── settings.json          # Claude Code configuration
 ├── rules/
-│   ├── project-stack.md   # Stack technique supporté
+│   ├── project-stack.md   # Supported tech stack
 │   ├── react/
 │   │   ├── component-patterns.md
 │   │   └── hexagonal-architecture.md
@@ -37,13 +37,13 @@ Configuration et conventions pour optimiser l'utilisation de Claude Code sur des
 │       ├── testing-guidelines.md
 │       └── typescript-conventions.md
 └── skills/
-    ├── readme/            # Génération de README
-    └── context-first/     # Stratégie d'implémentation contextuelle
+    ├── readme/            # README generation
+    └── context-first/     # Context-first implementation strategy
 ```
 
-## Stack technique couvert
+## Tech Stack Coverage
 
-| Catégorie  | Technologies                                              |
+| Category   | Technologies                                              |
 | ---------- | --------------------------------------------------------- |
 | Frontend   | React, Next.js, Vite, TypeScript, Tailwind CSS, ShadCN UI |
 | Backend    | Node.js, Fastify, Express, NestJS, Supabase               |
@@ -52,23 +52,23 @@ Configuration et conventions pour optimiser l'utilisation de Claude Code sur des
 | Tooling    | ESLint, Prettier, pnpm, Docker                            |
 | Middleware | Auth0, Stripe                                             |
 
-## Utilisation
+## Usage
 
-1. Copier le dossier `.claude/` à la racine de votre projet
-2. Adapter `rules/project-stack.md` selon votre stack
-3. Modifier `CLAUDE.md` pour vos règles spécifiques
+1. Copy the `.claude/` folder to the root of your project
+2. Adapt `rules/project-stack.md` according to your stack
+3. Modify `CLAUDE.md` for your specific rules
 
-## Skills disponibles
+## Available Skills
 
-| Skill            | Description                                                |
-| ---------------- | ---------------------------------------------------------- |
-| `/readme`        | Génère ou met à jour le README.md du projet                |
-| `/context-first` | Implémentation contextuelle basée sur les fichiers fournis |
+| Skill            | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| `/readme`        | Generates or updates the project README.md           |
+| `/context-first` | Context-first implementation based on provided files |
 
-## Plugins activés
+## Enabled Plugins
 
-- `frontend-design` - Interfaces frontend production-grade
-- `feature-dev` - Développement guidé de fonctionnalités
-- `code-simplifier` - Simplification et refactoring
-- `typescript-lsp` - Support LSP TypeScript
-- `pyright-lsp` - Support LSP Python
+- `frontend-design` - Production-grade frontend interfaces
+- `feature-dev` - Guided feature development
+- `code-simplifier` - Simplification and refactoring
+- `typescript-lsp` - TypeScript LSP support
+- `pyright-lsp` - Python LSP support
