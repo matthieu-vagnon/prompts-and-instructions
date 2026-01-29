@@ -50,7 +50,7 @@
 
 | Category      | Technologies                       |
 | ------------- | ---------------------------------- |
-| Auth          | Auth0                              |
+| Auth          | Clerk                              |
 | Billing       | Stripe                             |
 | AI            | OpenRouter API, Exa API, Langchain |
 | External APIs | RapidAPI                           |
