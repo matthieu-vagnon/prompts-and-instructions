@@ -4,6 +4,8 @@ Configuration and conventions to optimize OpenCode usage on TypeScript/React pro
 
 ## Features
 
+<img alt="Features Illustration" href=".github/assets/readme-illustration.png" /><br />
+
 - Ready-to-use OpenCode configuration rules
 - Strict TypeScript conventions with recommended patterns
 - Hexagonal architecture for React applications
