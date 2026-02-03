@@ -21,7 +21,16 @@ const TECHNOLOGIES = [
 ];
 
 /**
- * Generic items included regardless of technology selection.
+ * Available architectures for filtering rules/skills/agents.
+ * Items containing the architecture name anywhere will be included.
+ */
+const ARCHITECTURES = [
+  { value: "none", label: "None", hint: "No custom architecture" },
+  { value: "hexagonal", label: "Hexagonal", hint: "Ports & adapters pattern" },
+];
+
+/**
+ * Generic items included regardless of technology/architecture selection.
  */
 const GENERIC_RULES = [];
 const GENERIC_SKILLS = ["readme-writing", "implement-within"];
@@ -125,6 +134,13 @@ async function main() {
           required: false,
         }),
 
+      archs: () =>
+        p.select({
+          message: "Select custom architecture",
+          options: ARCHITECTURES,
+          required: false,
+        }),
+
       useSymlinks: () =>
         p.confirm({
           message: "Use symlinks?",
@@ -172,6 +188,7 @@ async function main() {
   );
 
   const selectedTechs = config.techs || [];
+  const selectedArchs = config.archs || [];
   const useSymlinks = config.useSymlinks;
   const gitignoreMode = config.gitignoreMode;
   const selectedTool = TOOLS[config.tool];
@@ -199,7 +216,7 @@ async function main() {
   if (fs.existsSync(rulesDir) && paths.rules) {
     for (const file of fs.readdirSync(rulesDir)) {
       if (!file.endsWith(".md")) continue;
-      if (shouldIncludeRule(file, selectedTechs)) {
+      if (shouldIncludeRule(file, selectedTechs, selectedArchs)) {
         const isGenericRule = isGeneric(file);
         // Generic rules are always copied (not symlinked) to allow customization
         const action = isGenericRule ? copyPath : linkOrCopy;
@@ -219,7 +236,7 @@ async function main() {
       const skillPath = path.join(skillsDir, dir);
       if (
         fs.statSync(skillPath).isDirectory() &&
-        shouldInclude(dir, selectedTechs, GENERIC_SKILLS)
+        shouldInclude(dir, selectedTechs, selectedArchs, GENERIC_SKILLS)
       ) {
         linkOrCopy(skillPath, path.join(targetPath, paths.skills, dir));
         stats.skills++;
@@ -234,7 +251,7 @@ async function main() {
       const agentPath = path.join(agentsDir, dir);
       if (
         fs.statSync(agentPath).isDirectory() &&
-        shouldInclude(dir, selectedTechs, GENERIC_AGENTS)
+        shouldInclude(dir, selectedTechs, selectedArchs, GENERIC_AGENTS)
       ) {
         linkOrCopy(agentPath, path.join(targetPath, paths.agents, dir));
         stats.agents++;
@@ -286,7 +303,8 @@ async function main() {
   for (const targetFile of Object.values(selectedTool.configFiles)) {
     summaryLines.push(`${targetFile}: copied`);
   }
-  const gitignoreAction = gitignoreMode === "exceptions" ? "exceptions added" : "entries added";
+  const gitignoreAction =
+    gitignoreMode === "exceptions" ? "exceptions added" : "entries added";
   summaryLines.push(`.gitignore: ${gitignoreAction}`);
 
   p.note(summaryLines.join("\n"), `${selectedTool.label} Setup`);
@@ -301,14 +319,18 @@ function resolvePath(inputPath) {
   return path.resolve(inputPath);
 }
 
-function shouldInclude(name, selectedTechs, genericList) {
+function shouldInclude(name, selectedTechs, selectedArchs, genericList) {
   if (genericList.includes(name)) return true;
-  return selectedTechs.some((tech) => name.startsWith(`${tech}-`));
+  const matchesTech = selectedTechs.some((tech) => name.startsWith(`${tech}-`));
+  const matchesArch = selectedArchs
+    .filter((arch) => arch !== "none")
+    .some((arch) => name.includes(arch));
+  return matchesTech || matchesArch;
 }
 
-function shouldIncludeRule(filename, selectedTechs) {
+function shouldIncludeRule(filename, selectedTechs, selectedArchs) {
   const name = filename.replace(".md", "");
-  return shouldInclude(name, selectedTechs, GENERIC_RULES);
+  return shouldInclude(name, selectedTechs, selectedArchs, GENERIC_RULES);
 }
 
 function isGeneric(filename) {
@@ -371,7 +393,8 @@ function updateGitignore(targetPath, tool, mode) {
 
   if (mode === "exceptions") {
     // Use negation patterns to track specific files
-    content += tool.gitignoreEntries.map((entry) => `!${entry}`).join("\n") + "\n";
+    content +=
+      tool.gitignoreEntries.map((entry) => `!${entry}`).join("\n") + "\n";
   } else {
     // Default: add entries to ignore
     content += tool.gitignoreEntries.join("\n") + "\n";
